@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user>
+        <name>Hamad</name>
+        <phone>+201152721898</phone>
+        <address>lorem</address>
+        <email>lorem@lorem.com</email>
+    </user>
+    <user>
+        <name>Khaled</name>
+        <phone>+2015164654654</phone>
+        <address>lorem</address>
+        <email>sladjlkasj@jadhsjd.org</email>
+    </user>
+</users>
