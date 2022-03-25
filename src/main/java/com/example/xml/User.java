@@ -1,14 +1,15 @@
 package com.example.xml;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 //@JsonPropertyOrder({"Name","Phone","Address","EMail"})
 @JacksonXmlRootElement(localName = "users")
 public class User {
+
+    @JacksonXmlProperty(localName = "id")
+    private final int id = (int) Math.ceil(Math.random()*999999999);
     //@JsonProperty("Name")
     @JacksonXmlProperty(localName = "name")
     private String name;
@@ -22,7 +23,7 @@ public class User {
     @JacksonXmlProperty(localName = "email")
     private String email;
 
-    public  User(){}
+    public  User(){    }
 
     public User(String name, String phone, String address, String EMail) {
         this.name = name;
@@ -61,6 +62,10 @@ public class User {
 
     public void setEMail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

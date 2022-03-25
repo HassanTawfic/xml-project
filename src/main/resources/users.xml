@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<users>
-    <user>
-        <name>Hamad</name>
-        <phone>+201152721898</phone>
-        <address>lorem</address>
-        <email>lorem@lorem.com</email>
-    </user>
-    <user>
-        <name>Khaled</name>
-        <phone>+2015164654654</phone>
-        <address>lorem</address>
-        <email>sladjlkasj@jadhsjd.org</email>
-    </user>
-</users>
+<?xml version="1.0" encoding="UTF-8" ?><users><user><id>1</id><name>Hamad</name><phone>+201152721898</phone><address>lorem</address><email>lorem@lorem.com</email></user><user><id>5</id><name>Hassan</name><phone>+201152</phone><address>55</address><email>555</email></user><user><id>532407351</id><name>q</name><phone>q</phone><address>q</address><email>q</email></user></users>

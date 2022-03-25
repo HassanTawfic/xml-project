@@ -35,6 +35,7 @@ public class UsersController {
 
             System.out.println(user + " ");
         }
+        inputStream.close();
         return users;
     }
 }
