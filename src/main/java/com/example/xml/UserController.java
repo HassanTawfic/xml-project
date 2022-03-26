@@ -24,7 +24,7 @@ class UserController {
         XmlMapper mapper = new XmlMapper();
         Users users = mapper.readValue(xmlStreamReader,Users.class);
         ArrayList<User> userlist = users.getUser();
-        userlist.get(0).getId();
+        //userlist.get(0).getId();
         model.addAttribute("user", user);
         model.addAttribute("userList", userlist);
         return "home";
@@ -48,6 +48,88 @@ class UserController {
         String xmlString = mapper.writeValueAsString(updatedUsers);
         stringToDom(xmlString);
         // write to the console
+        System.out.println(xmlString);
+        inputStream.close();
+        return "redirect:/";
+
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable int id, Model model) throws XMLStreamException, IOException {
+        InputStream inputStream = UsersController.class.getClassLoader().getResourceAsStream("users.xml");
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
+        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(inputStream);
+        XmlMapper mapper = new XmlMapper();
+        Users users = mapper.readValue(xmlStreamReader,Users.class);
+        ArrayList<User> userlist = users.getUser();
+        int index = 0;
+        try {
+            for(int i=0;i<=userlist.size();i++)
+            {
+                if(userlist.get(i).getId()==id)
+                {
+                    index=i;
+                }
+            }
+        }catch (Exception e)
+        {}
+        userlist.remove(index);
+        System.out.println(userlist);
+        Users updatedUsers = new Users(userlist);
+        String xmlString = mapper.writeValueAsString(updatedUsers);
+        stringToDom(xmlString);
+        System.out.println(xmlString);
+        inputStream.close();
+        return "redirect:/";
+    }
+    @GetMapping("/edit/{id}")
+    public String editUser(@PathVariable int id, Model model) throws XMLStreamException, IOException {
+        InputStream inputStream = UsersController.class.getClassLoader().getResourceAsStream("users.xml");
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
+        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(inputStream);
+        XmlMapper mapper = new XmlMapper();
+        Users users = mapper.readValue(xmlStreamReader,Users.class);
+        ArrayList<User> userlist = users.getUser();
+        int index = 0;
+        try {
+            for(int i=0;i<=userlist.size();i++)
+            {
+                if(userlist.get(i).getId()==id)
+                {
+                    index=i;
+                }
+            }
+        }catch (Exception e)
+        {}
+        User targetUser = userlist.get(index);
+        model.addAttribute("targetUser",targetUser);
+        return "edit";
+    }
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String updateUser(@PathVariable int id , @ModelAttribute ("target") User updatedUser) throws XMLStreamException, IOException {
+        InputStream inputStream = UsersController.class.getClassLoader().getResourceAsStream("users.xml");
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
+        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(inputStream);
+        XmlMapper mapper = new XmlMapper();
+        Users users = mapper.readValue(xmlStreamReader,Users.class);
+        ArrayList<User> userlist = users.getUser();
+        int index = 0;
+        try {
+            for(int i=0;i<=userlist.size();i++)
+            {
+                if(userlist.get(i).getId()==id)
+                {
+                    index=i;
+                }
+            }
+        }catch (Exception e)
+        {}
+        userlist.get(index).setName(updatedUser.getName());
+        userlist.get(index).setPhone(updatedUser.getPhone());
+        userlist.get(index).setAddress(updatedUser.getAddress());
+        userlist.get(index).setEMail(updatedUser.getEMail());
+        Users updatedUsers = new Users(userlist);
+        String xmlString = mapper.writeValueAsString(updatedUsers);
+        stringToDom(xmlString);
         System.out.println(xmlString);
         inputStream.close();
         return "redirect:/";

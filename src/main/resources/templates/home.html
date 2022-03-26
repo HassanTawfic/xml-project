@@ -67,7 +67,7 @@
             <td>
                 <div class="actionButtons d-flex justify-content-center">
                     <a th:href="@{'/edit/'+${u.id}}" class="btn btn-success me-2">Edit</a>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <a th:href="@{'/delete/'+${u.id}}" class="btn btn-danger">Delete</a>
                 </div>
             </td>
         </tr>
