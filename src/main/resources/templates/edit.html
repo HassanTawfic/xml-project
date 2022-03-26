@@ -6,18 +6,18 @@
 </head>
 <body>
     <div class="container">
-        <form action="#" th:action="@{'/update/'+${u.id}}" th:object="${target}" method="post">
+        <form action="#" th:action="@{'/update/'+${targetUser.id}}" th:object="${targetUser}" method="post">
             <div class="form-group mt-5">
                 <label for="Name">Name</label>
-                <input type="text" class="form-control" th:value="${targetUser.Name}" th:field="*{Name}" name="name" id="Name" placeholder="Enter Full Name">
+                <input type="text" class="form-control" th:value="${targetUser.name}" th:field="*{name}" name="name" id="Name" placeholder="Enter Full Name">
             </div>
             <div class="form-group">
                 <label for="Phone">Phone</label>
-                <input type="text" class="form-control" th:value="${targetUser.Phone}" th:field="*{Phone}" name="phone" id="Phone" placeholder="Enter Mobile Phone">
+                <input type="text" class="form-control" th:value="${targetUser.phone}" th:field="*{phone}" name="phone" id="Phone" placeholder="Enter Mobile Phone">
             </div>
             <div class="form-group">
                 <label for="Address">Address</label>
-                <input type="text" class="form-control" th:value="${targetUser.Address}" th:field="*{Address}" name="address" id="Address" placeholder="Enter Address">
+                <input type="text" class="form-control" th:value="${targetUser.address}" th:field="*{address}" name="address" id="Address" placeholder="Enter Address">
             </div>
             <div class="form-group">
                 <label for="EMail">E-Mail address</label>

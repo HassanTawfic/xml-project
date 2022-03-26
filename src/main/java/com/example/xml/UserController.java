@@ -89,6 +89,8 @@ class UserController {
         XmlMapper mapper = new XmlMapper();
         Users users = mapper.readValue(xmlStreamReader,Users.class);
         ArrayList<User> userlist = users.getUser();
+        System.out.println(id);
+        System.out.println(userlist.get(0).getId());
         int index = 0;
         try {
             for(int i=0;i<=userlist.size();i++)
@@ -100,7 +102,10 @@ class UserController {
             }
         }catch (Exception e)
         {}
+        System.out.println(index);
+        System.out.println(userlist.get(index));
         User targetUser = userlist.get(index);
+        System.out.println(targetUser);
         model.addAttribute("targetUser",targetUser);
         return "edit";
     }
